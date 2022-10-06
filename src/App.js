@@ -1,25 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import {observer} from 'mobx-react-lite'
 
-function App() {
+const App = observer((props) => {
+  console.log('props ->',props)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div>Counter</div>
+        <p>Value: {props.store.count}</p>
+        <div className='btns'>
+        <button type='button' onClick={()=>props.store.increment()}>Increment</button>
+        <button type='button' onClick={()=>props.store.decrement()}>Decrement</button>
+        </div>
+        
       </header>
     </div>
   );
-}
+})
 
 export default App;
